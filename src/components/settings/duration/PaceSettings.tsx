@@ -17,8 +17,8 @@ function PaceSettings({
   timeBlocks: Duration[],
   selectedDuration?: number,
   selectedTimeBlock?: number,
-  onDurationChange: (duration: number) => void
-  onTimeBlockChange: (timeBlock: number | null) => void
+  onDurationChange: (duration?: number) => void
+  onTimeBlockChange: (timeBlock?: number) => void
 }) {
   return (
     <Stack spacing={6}>

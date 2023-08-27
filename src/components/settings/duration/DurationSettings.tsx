@@ -3,18 +3,17 @@ import Tab from '@mui/joy/Tab';
 import Tabs from '@mui/joy/Tabs';
 import TabList from '@mui/joy/TabList';
 import TabPanel from '@mui/joy/TabPanel';
-import Typography from '@mui/joy/Typography';
-import { Duration } from '../../../types/Duration';
-import PaceSettings from './PaceSettings';
+// import { Duration } from '../../../types/Duration';
+// import PaceSettings from './PaceSettings';
 
 function DurationSettings({
-  durations,
-  selectedDuration,
-  onDurationChange
+  // durations,
+  // selectedDuration,
+  // onDurationChange
 }: {
-  durations: Duration[],
-  selectedDuration?: number,
-  onDurationChange: (duration: number) => void
+  // durations: Duration[],
+  // selectedDuration?: number,
+  // onDurationChange: (duration: number) => void
 }) {
   return (
     <Sheet>
@@ -25,11 +24,11 @@ function DurationSettings({
         </TabList>
 
         <TabPanel value="pace">
-          <PaceSettings
+          {/* <PaceSettings
             durations={durations}
             selectedDuration={selectedDuration}
             onDurationChange={onDurationChange}
-          />
+          /> */}
         </TabPanel>
 
         <TabPanel value="time-block">

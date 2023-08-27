@@ -24,7 +24,7 @@ const durations = [
 ];
 
 const timeBlocks = [
-  { label: 'Never', duration: null },
+  { label: 'Never', duration: undefined },
   { label: '15 min', duration: 15 * 60 * 1000 },
   { label: '30 min', duration: 30 * 60 * 1000 },
   { label: '45 min', duration: 45 * 60 * 1000 },
@@ -39,8 +39,8 @@ const tones = [
 ];
 
 function App() {
-  const [selectedDuration, setSelectedDuration] = useState<number>(durations[0].duration);
-  const [selectedTimeBlock, setSelectedTimeBlock] = useState<number | null>(timeBlocks[0].duration);
+  const [selectedDuration, setSelectedDuration] = useState<number | undefined>(durations[0].duration);
+  const [selectedTimeBlock, setSelectedTimeBlock] = useState<number | undefined>(timeBlocks[0].duration);
   const [nextNotificationTime, setNextNotificationTime] = useState<number | null>(null);
 
   return (
@@ -74,10 +74,10 @@ function App() {
         <Sheet>
           <Typography level="title-lg">Debug</Typography>
 
-          <div>Selected duration: {selectedDuration / 1000 / 60} min</div>
+          <div>Selected duration: {(selectedDuration ?? 0) / 1000 / 60} min</div>
           <div>Next notification time:
             {nextNotificationTime} -
-            {nextNotificationTime ? new Date(nextNotificationTime).toLocaleTimeString() : 'null'}
+            {nextNotificationTime ? new Date(nextNotificationTime!).toLocaleTimeString() : 'null'}
           </div>
         </Sheet>
       }

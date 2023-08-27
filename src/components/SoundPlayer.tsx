@@ -3,17 +3,19 @@ import Button from '@mui/joy/Button';
 import PlayArrow from '@mui/icons-material/PlayArrow';
 import Stop from '@mui/icons-material/Stop';
 
+const defaultDelay = 15 * 60 * 1000;
+
 function playSound(soundUrl: string) {
   const audio = new Audio(soundUrl)
   audio.play()
 }
 
 function SoundPlayer({
-  delay,
+  delay = defaultDelay,
   soundUrl,
   onNextNotificationTime
 }: {
-  delay: number,
+  delay?: number,
   soundUrl: string,
   onNextNotificationTime: (nextTime: number | null) => void
 }) {
