@@ -23,6 +23,26 @@ function PaceSettings({
   return (
     <Stack spacing={6}>
       <Stack spacing={2}>
+        <Typography level="body-lg">For the next</Typography>
+
+        <ButtonGroup
+          style={{ marginLeft: "auto", marginRight: "auto" }}
+          variant="soft"
+          spacing="0.5rem"
+        >
+          {timeBlocks.map((timeBlock) => (
+            <Button
+              key={timeBlock.duration ?? 'infinite'}
+              onClick={() => onTimeBlockChange(timeBlock.duration)}
+              variant={timeBlock.duration === selectedTimeBlock ? 'solid' : undefined}
+            >
+              {timeBlock.label}
+            </Button>
+          ))}
+        </ButtonGroup>
+      </Stack>
+
+      <Stack spacing={2}>
         <Typography level="body-lg">Play a sound every</Typography>
 
         <ButtonGroup
@@ -37,26 +57,6 @@ function PaceSettings({
               variant={duration.duration === selectedDuration ? 'solid' : undefined}
             >
               {duration.label}
-            </Button>
-          ))}
-        </ButtonGroup>
-      </Stack>
-
-      <Stack spacing={2}>
-        <Typography level="body-lg">Until this duration has elapsed</Typography>
-
-        <ButtonGroup
-          style={{ marginLeft: "auto", marginRight: "auto" }}
-          variant="soft"
-          spacing="0.5rem"
-        >
-          {timeBlocks.map((timeBlock) => (
-            <Button
-              key={timeBlock.duration}
-              onClick={() => onTimeBlockChange(timeBlock.duration)}
-              variant={timeBlock.duration === selectedTimeBlock ? 'solid' : undefined}
-            >
-              {timeBlock.label}
             </Button>
           ))}
         </ButtonGroup>
