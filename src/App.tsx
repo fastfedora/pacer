@@ -2,7 +2,6 @@ import { useState } from 'react'
 import AccordionGroup from '@mui/joy/AccordionGroup';
 import Sheet from '@mui/joy/Sheet';
 import Stack from '@mui/joy/Stack';
-import Typography from '@mui/joy/Typography';
 import Header from './components/app/Header';
 import Instructions from './components/app/Instructions';
 import DurationSettings from './components/settings/DurationSettings';
@@ -17,7 +16,7 @@ import './App.css'
 
 /**
  * TODO:
- * - Stop the sound when the Stop button is pressed
+ * - Add embedded mode without settings, only the timer
  */
 
 const paces = [
@@ -117,18 +116,6 @@ function App() {
           onTimerInfoChanged={setTimerInfo}
         />
       </Sheet>
-
-      {false &&
-        <Sheet>
-          <Typography level="title-lg">Debug</Typography>
-
-          <div>Selected duration: {(selectedPace ?? 0) / 60} min</div>
-          <div>Next notification time:
-            {nextNotificationTime} -
-            {nextNotificationTime ? new Date(nextNotificationTime!).toLocaleTimeString() : 'null'}
-          </div>
-        </Sheet>
-      }
     </Stack>
   );
 }
