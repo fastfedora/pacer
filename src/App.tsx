@@ -39,6 +39,12 @@ const durations = [
 ];
 
 const tones: Record<string, ToneInfo> = {
+  'gamelan-gong': {
+    label: 'Gamelan Gong',
+    file: '411090-inspectorj-wind-chime-gamelan-gong-a.wav',
+    // TODO: Add links, as seen here: https://freesound.org/people/InspectorJ/sounds/411090/
+    credit: '"Wind Chime, Gamelan Gong, A.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org',
+  },
   'ocean-waves': {
     label: 'Ocean Waves',
     file: '530996-surrogatemedia-the-ocean-waves.wav'
@@ -46,6 +52,14 @@ const tones: Record<string, ToneInfo> = {
   'altar-chimes': {
     label: 'Altar Chimes',
     file: '556779-launchsite-altar-chimesringtone.wav'
+  },
+  'seagull': {
+    label: 'Seagull',
+    file: '699979-henner1964-seagull.mp3',
+  },
+  'bird-chirp': {
+    label: 'Bird Chirping',
+    file: '519108-matrixxx-bird-07.wav',
   },
 };
 
