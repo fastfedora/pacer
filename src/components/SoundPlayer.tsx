@@ -5,9 +5,9 @@ import Stop from '@mui/icons-material/Stop';
 import { TimerInfo } from '../types/TimerInfo';
 
 const defaultDelay = 15 * 60;
-const soundCache: Record<string, Audio> = {};
+const soundCache: Record<string, HTMLAudioElement> = {};
 
-const isPlaying = (audio: Audio) => (
+const isPlaying = (audio: HTMLAudioElement) => (
   audio.currentTime > 0 && !audio.paused && !audio.ended &&
   audio.readyState > audio.HAVE_CURRENT_DATA
 );
