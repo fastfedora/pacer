@@ -29,6 +29,7 @@ const paces = [
 ];
 
 const durations = [
+  // { label: '1 min', seconds: 1 * 60, defaultPace: 15, },
   { label: '15 min', seconds: 15 * 60, defaultPace: 5 * 60, },
   { label: '30 min', seconds: 30 * 60, defaultPace: 10 * 60, },
   { label: '45 min', seconds: 45 * 60, defaultPace: 15 * 60, },
