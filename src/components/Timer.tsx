@@ -32,7 +32,7 @@ function Timer({ timerInfo }: { timerInfo?: TimerInfo }) {
   }
 
   return (
-    <Stack style={{ fontSize: 72, padding: 36 }} spacing={4}>
+    <Stack style={{ fontSize: 72, paddingTop: 36 }} spacing={4}>
       <Stack direction="row" justifyContent="center" spacing={8}>
         <div>
           <Typography level="title-lg">Next tone in</Typography>

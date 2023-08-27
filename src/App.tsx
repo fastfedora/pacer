@@ -102,13 +102,11 @@ function App() {
         </Accordion>
 
         <Accordion label="Timer" defaultExpanded={true}>
-          <Sheet>
-            <Timer timerInfo={timerInfo} />
-          </Sheet>
+          <Timer timerInfo={timerInfo} />
         </Accordion>
       </AccordionGroup>
 
-      <Sheet sx={{ p: 4, pb: 8 }}>
+      <Sheet sx={{ pt: 4, pb: 8 }}>
         <SoundPlayer
           delay={selectedPace}
           duration={selectedDuration}
