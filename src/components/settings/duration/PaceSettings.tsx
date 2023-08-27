@@ -2,67 +2,36 @@ import Button from '@mui/joy/Button';
 import ButtonGroup from '@mui/joy/ButtonGroup';
 import Stack from '@mui/joy/Stack';
 import Typography from '@mui/joy/Typography';
-import { Duration } from '../../../types/Duration';
+import { Pace } from '../../../types/Pace';
 
-
-function PaceSettings({
-  durations,
-  timeBlocks,
-  selectedDuration,
-  selectedTimeBlock,
-  onDurationChange,
-  onTimeBlockChange
+export default function PaceSettings({
+  paces,
+  selectedPace,
+  onPaceChange,
 }: {
-  durations: Duration[],
-  timeBlocks: Duration[],
-  selectedDuration?: number,
-  selectedTimeBlock?: number,
-  onDurationChange: (duration?: number) => void
-  onTimeBlockChange: (timeBlock?: number) => void
+  paces: Pace[],
+  selectedPace?: number,
+  onPaceChange: (duration?: number) => void
 }) {
   return (
-    <Stack spacing={6} sx={{ p: 2 }}>
-      <Stack spacing={2}>
-        <Typography level="body-lg">For the next</Typography>
+    <Stack spacing={2}>
+      <Typography level="body-lg">Play a sound every</Typography>
 
-        <ButtonGroup
-          style={{ marginLeft: "auto", marginRight: "auto" }}
-          variant="soft"
-          spacing="0.5rem"
-        >
-          {timeBlocks.map((timeBlock) => (
-            <Button
-              key={timeBlock.duration ?? 'infinite'}
-              onClick={() => onTimeBlockChange(timeBlock.duration)}
-              variant={timeBlock.duration === selectedTimeBlock ? 'solid' : undefined}
-            >
-              {timeBlock.label}
-            </Button>
-          ))}
-        </ButtonGroup>
-      </Stack>
-
-      <Stack spacing={2}>
-        <Typography level="body-lg">Play a sound every</Typography>
-
-        <ButtonGroup
-          style={{ marginLeft: "auto", marginRight: "auto" }}
-          variant="soft"
-          spacing="0.5rem"
-        >
-          {durations.map((duration) => (
-            <Button
-              key={duration.duration}
-              onClick={() => onDurationChange(duration.duration)}
-              variant={duration.duration === selectedDuration ? 'solid' : undefined}
-            >
-              {duration.label}
-            </Button>
-          ))}
-        </ButtonGroup>
-      </Stack>
+      <ButtonGroup
+        style={{ marginLeft: "auto", marginRight: "auto" }}
+        variant="soft"
+        spacing="0.5rem"
+      >
+        {paces.map((duration) => (
+          <Button
+            key={duration.seconds}
+            onClick={() => onPaceChange(duration.seconds)}
+            variant={duration.seconds === selectedPace ? 'solid' : undefined}
+          >
+            {duration.label}
+          </Button>
+        ))}
+      </ButtonGroup>
     </Stack>
-  )
+  );
 }
-
-export default PaceSettings

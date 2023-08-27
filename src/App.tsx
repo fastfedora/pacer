@@ -6,6 +6,7 @@ import Typography from '@mui/joy/Typography';
 // import DurationSettings from './components/settings/duration/DurationSettings';
 import Header from './components/app/Header';
 import Instructions from './components/app/Instructions';
+import DurationSettings from './components/settings/DurationSettings';
 import PaceSettings from './components/settings/duration/PaceSettings';
 import Accordion from './components/styled/Accordion';
 import SoundPlayer from './components/SoundPlayer'
@@ -19,22 +20,22 @@ import './App.css'
  */
 
 
-const durations = [
-  { label: '0.5 min', duration: 0.5 * 60 * 1000 },
-  { label: '5 min', duration: 5 * 60 * 1000 },
-  { label: '10 min', duration: 10 * 60 * 1000 },
-  { label: '15 min', duration: 15 * 60 * 1000 },
-  { label: '30 min', duration: 30 * 60 * 1000 },
+const paces = [
+  { label: '0.5 min', seconds: 0.5 * 60 },
+  { label: '5 min', seconds: 5 * 60 },
+  { label: '10 min', seconds: 10 * 60 },
+  { label: '15 min', seconds: 15 * 60 },
+  { label: '30 min', seconds: 30 * 60 },
 ];
 
-const timeBlocks = [
-  { label: '15 min', duration: 15 * 60 * 1000 },
-  { label: '30 min', duration: 30 * 60 * 1000 },
-  { label: '45 min', duration: 45 * 60 * 1000 },
-  { label: '60 min', duration: 60 * 60 * 1000 },
-  { label: '90 min', duration: 90 * 60 * 1000 },
-  { label: '120 min', duration: 120 * 60 * 1000 },
-  { label: 'Indefinitely', duration: undefined },
+const durations = [
+  { label: '15 min', seconds: 15 * 60 },
+  { label: '30 min', seconds: 30 * 60 },
+  { label: '45 min', seconds: 45 * 60 },
+  { label: '60 min', seconds: 60 * 60 },
+  { label: '90 min', seconds: 90 * 60 },
+  { label: '120 min', seconds: 120 * 60 },
+  { label: 'Indefinitely', seconds: undefined },
 ];
 
 const tones = [
@@ -43,8 +44,8 @@ const tones = [
 ];
 
 function App() {
-  const [selectedDuration, setSelectedDuration] = useState<number | undefined>(durations[0].duration);
-  const [selectedTimeBlock, setSelectedTimeBlock] = useState<number | undefined>(timeBlocks[0].duration);
+  const [selectedPace, setSelectedPace] = useState<number | undefined>(paces[0].seconds);
+  const [selectedDuration, setSelectedDuration] = useState<number | undefined>(durations[0].seconds);
   const [nextNotificationTime, setNextNotificationTime] = useState<number | undefined>();
 
   return (
@@ -57,14 +58,19 @@ function App() {
         </Accordion>
 
         <Accordion label="Settings" defaultExpanded={true}>
-          <PaceSettings
-            durations={durations}
-            timeBlocks={timeBlocks}
-            selectedDuration={selectedDuration}
-            selectedTimeBlock={selectedTimeBlock}
-            onDurationChange={setSelectedDuration}
-            onTimeBlockChange={setSelectedTimeBlock}
-          />
+          <Stack spacing={6} sx={{ p: 2 }}>
+            <DurationSettings
+              durations={durations}
+              selectedDuration={selectedDuration}
+              onDurationChange={setSelectedDuration}
+            />
+
+            <PaceSettings
+              paces={paces}
+              selectedPace={selectedPace}
+              onPaceChange={setSelectedPace}
+            />
+          </Stack>
         </Accordion>
 
         <Accordion label="Timer" defaultExpanded={true}>
@@ -76,7 +82,7 @@ function App() {
 
       <Sheet sx={{ p: 4, pb: 8 }}>
         <SoundPlayer
-          delay={selectedDuration}
+          delay={selectedPace}
           soundUrl={`/sounds/${tones[0].file}`}
           onNextNotificationTime={setNextNotificationTime}
         />
@@ -86,7 +92,7 @@ function App() {
         <Sheet>
           <Typography level="title-lg">Debug</Typography>
 
-          <div>Selected duration: {(selectedDuration ?? 0) / 1000 / 60} min</div>
+          <div>Selected duration: {(selectedPace ?? 0) / 60} min</div>
           <div>Next notification time:
             {nextNotificationTime} -
             {nextNotificationTime ? new Date(nextNotificationTime!).toLocaleTimeString() : 'null'}
