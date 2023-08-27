@@ -8,10 +8,12 @@ export default function DurationSettings({
   durations,
   selectedDuration,
   onDurationChange,
+  onPaceChange,
 }: {
   durations: Duration[],
   selectedDuration?: number,
-  onDurationChange: (duration?: number) => void
+  onDurationChange: (duration?: number) => void,
+  onPaceChange: (pace: number) => void
 }) {
   return (
     <Stack spacing={2}>
@@ -25,7 +27,13 @@ export default function DurationSettings({
         {durations.map((duration) => (
           <Button
             key={duration.seconds ?? 'infinite'}
-            onClick={() => onDurationChange(duration.seconds)}
+            onClick={() => {
+              onDurationChange(duration.seconds);
+
+              if (duration.defaultPace) {
+                onPaceChange(duration.defaultPace);
+              }
+            }}
             variant={duration.seconds === selectedDuration ? 'solid' : undefined}
           >
             {duration.label}

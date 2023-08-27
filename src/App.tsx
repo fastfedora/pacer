@@ -29,12 +29,12 @@ const paces = [
 ];
 
 const durations = [
-  { label: '15 min', seconds: 15 * 60 },
-  { label: '30 min', seconds: 30 * 60 },
-  { label: '45 min', seconds: 45 * 60 },
-  { label: '60 min', seconds: 60 * 60 },
-  { label: '90 min', seconds: 90 * 60 },
-  { label: '120 min', seconds: 120 * 60 },
+  { label: '15 min', seconds: 15 * 60, defaultPace: 5 * 60, },
+  { label: '30 min', seconds: 30 * 60, defaultPace: 10 * 60, },
+  { label: '45 min', seconds: 45 * 60, defaultPace: 15 * 60, },
+  { label: '60 min', seconds: 60 * 60, defaultPace: 20 * 60, },
+  { label: '90 min', seconds: 90 * 60, defaultPace: 30 * 60, },
+  { label: '120 min', seconds: 120 * 60, defaultPace: 30 * 60, },
   { label: 'Indefinitely', seconds: undefined },
 ];
 
@@ -84,6 +84,7 @@ function App() {
               durations={durations}
               selectedDuration={selectedDuration}
               onDurationChange={setSelectedDuration}
+              onPaceChange={setSelectedPace}
             />
 
             <PaceSettings
