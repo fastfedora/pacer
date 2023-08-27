@@ -116,7 +116,9 @@ function App() {
             }}
           />
 
-          <Timer timerInfo={timerInfo} />
+          {timerInfo &&
+            <Timer timerInfo={timerInfo} />
+          }
         </Stack>
       </Sheet>
 
