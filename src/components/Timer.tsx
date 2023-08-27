@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
 
-function Timer({ toTime }: { toTime: number }) {
-  const [remainingTime, setRemainingTime] = useState(toTime - Date.now())
+function Timer({ toTime }: { toTime?: number }) {
+  const [remainingTime, setRemainingTime] = useState(toTime ? toTime - Date.now() : undefined);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setRemainingTime(toTime - Date.now())
-    }, 1000)
+    if (toTime) {
+      const intervalId = setInterval(() => {
+        setRemainingTime(toTime - Date.now())
+      }, 1000)
 
-    return () => clearInterval(intervalId)
+      return () => clearInterval(intervalId)
+    }
   }, [toTime])
 
   const formatTime = (time: number) => {
@@ -20,7 +22,7 @@ function Timer({ toTime }: { toTime: number }) {
 
   return (
     <div style={{ fontSize: 60 }}>
-      {remainingTime > 0 ? formatTime(remainingTime) : '00:00'}
+      {remainingTime ? formatTime(remainingTime) : '00:00'}
     </div>
   )
 }

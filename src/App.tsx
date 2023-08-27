@@ -41,7 +41,7 @@ const tones = [
 function App() {
   const [selectedDuration, setSelectedDuration] = useState<number | undefined>(durations[0].duration);
   const [selectedTimeBlock, setSelectedTimeBlock] = useState<number | undefined>(timeBlocks[0].duration);
-  const [nextNotificationTime, setNextNotificationTime] = useState<number | null>(null);
+  const [nextNotificationTime, setNextNotificationTime] = useState<number | undefined>();
 
   return (
     <Stack style={{ width: 600 }} spacing={8}>
@@ -56,11 +56,9 @@ function App() {
         onTimeBlockChange={setSelectedTimeBlock}
       />
 
-      {nextNotificationTime &&
         <Sheet>
           <Timer toTime={nextNotificationTime} />
         </Sheet>
-      }
 
       <Sheet>
         <SoundPlayer

@@ -17,7 +17,7 @@ function SoundPlayer({
 }: {
   delay?: number,
   soundUrl: string,
-  onNextNotificationTime: (nextTime: number | null) => void
+  onNextNotificationTime: (nextTime: number | undefined) => void
 }) {
   const [intervalId, setIntervalId] = useState<number | null>(null)
 
@@ -35,7 +35,7 @@ function SoundPlayer({
     if (intervalId) {
       clearInterval(intervalId)
       setIntervalId(null)
-      onNextNotificationTime(null)
+      onNextNotificationTime(undefined)
     }
   }
 
