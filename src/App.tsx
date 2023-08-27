@@ -28,13 +28,13 @@ const durations = [
 ];
 
 const timeBlocks = [
-  { label: 'Never', duration: undefined },
   { label: '15 min', duration: 15 * 60 * 1000 },
   { label: '30 min', duration: 30 * 60 * 1000 },
   { label: '45 min', duration: 45 * 60 * 1000 },
   { label: '60 min', duration: 60 * 60 * 1000 },
   { label: '90 min', duration: 90 * 60 * 1000 },
   { label: '120 min', duration: 120 * 60 * 1000 },
+  { label: 'Indefinitely', duration: undefined },
 ];
 
 const tones = [
