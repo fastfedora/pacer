@@ -3,7 +3,6 @@ import AccordionGroup from '@mui/joy/AccordionGroup';
 import Sheet from '@mui/joy/Sheet';
 import Stack from '@mui/joy/Stack';
 import Typography from '@mui/joy/Typography';
-// import DurationSettings from './components/settings/duration/DurationSettings';
 import Header from './components/app/Header';
 import Instructions from './components/app/Instructions';
 import DurationSettings from './components/settings/DurationSettings';
