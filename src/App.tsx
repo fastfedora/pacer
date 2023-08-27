@@ -20,10 +20,11 @@ import './App.css'
  */
 
 const paces = [
-  { label: '0.5 min', seconds: 0.5 * 60 },
+  // { label: '15 sec', seconds: 15 },
   { label: '5 min', seconds: 5 * 60 },
   { label: '10 min', seconds: 10 * 60 },
   { label: '15 min', seconds: 15 * 60 },
+  { label: '20 min', seconds: 20 * 60 },
   { label: '30 min', seconds: 30 * 60 },
 ];
 

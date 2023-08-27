@@ -15,7 +15,7 @@ export default function PaceSettings({
 }) {
   return (
     <Stack spacing={2}>
-      <Typography level="body-lg">Play a sound every</Typography>
+      <Typography level="body-lg">Remind me of time passing every</Typography>
 
       <ButtonGroup
         style={{ marginLeft: "auto", marginRight: "auto" }}
