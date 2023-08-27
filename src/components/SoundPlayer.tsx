@@ -24,7 +24,9 @@ function SoundPlayer({
   }, [soundUrl])
 
   const handlePlay = () => {
-    onNextNotificationTime(Date.now() + delay * 1000)
+    // Add an extra minute to the start time so the user sees the total time
+    // set first before it starts counting down.
+    onNextNotificationTime(Date.now() + (delay * 1000 + 1000));
 
     const newIntervalId = window.setInterval(() => {
       onNextNotificationTime(Date.now() + delay * 1000)
