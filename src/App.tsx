@@ -111,6 +111,7 @@ function App() {
       <Sheet sx={{ p: 4, pb: 8 }}>
         <SoundPlayer
           delay={selectedPace}
+          duration={selectedDuration}
           soundUrl={`/sounds/${tones[selectedTone].file}`}
           onNextNotificationTime={setNextNotificationTime}
         />

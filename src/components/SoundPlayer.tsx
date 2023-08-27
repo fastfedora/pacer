@@ -8,14 +8,17 @@ const soundCache: Record<string, Audio> = {};
 
 function SoundPlayer({
   delay = defaultDelay,
+  duration,
   soundUrl,
   onNextNotificationTime
 }: {
   delay?: number,
+  duration?: number,
   soundUrl: string,
   onNextNotificationTime: (nextTime: number | undefined) => void
 }) {
   const [intervalId, setIntervalId] = useState<number | null>(null)
+  const [stopTimerId, setStopTimerId] = useState<number | null>(null)
 
   useEffect(() => {
     if (!soundCache[soundUrl]) {
@@ -33,15 +36,29 @@ function SoundPlayer({
       soundCache[soundUrl].play();
     }, delay * 1000);
 
-    setIntervalId(newIntervalId)
+    setIntervalId(newIntervalId);
+
+    if (duration) {
+      const newStopTimerId = window.setTimeout(() => handleStop(), duration * 1000);
+
+      setStopTimerId(newStopTimerId);
+    }
   }
 
   const handleStop = () => {
     if (intervalId) {
       clearInterval(intervalId)
+
+      if (stopTimerId) {
+        clearTimeout(stopTimerId);
+      }
+
       soundCache[soundUrl].pause();
-      setIntervalId(null)
-      onNextNotificationTime(undefined)
+
+      setIntervalId(null);
+      setStopTimerId(null);
+
+      onNextNotificationTime(undefined);
     }
   }
 
