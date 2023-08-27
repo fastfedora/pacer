@@ -11,6 +11,7 @@ import ToneSettings from './components/settings/ToneSettings';
 import Accordion from './components/styled/Accordion';
 import SoundPlayer from './components/SoundPlayer'
 import Timer from './components/Timer';
+import { TimerInfo } from './types/TimerInfo';
 import { ToneInfo } from './types/ToneInfo';
 import './App.css'
 
@@ -67,7 +68,7 @@ function App() {
   const [selectedPace, setSelectedPace] = useState<number | undefined>(paces[0].seconds);
   const [selectedDuration, setSelectedDuration] = useState<number | undefined>(durations[0].seconds);
   const [selectedTone, setSelectedTone] = useState<string>(Object.keys(tones)[0]);
-  const [nextNotificationTime, setNextNotificationTime] = useState<number | undefined>();
+  const [timerInfo, setTimerInfo] = useState<TimerInfo>();
 
   return (
     <Stack style={{ width: 700 }} spacing={0}>
@@ -103,7 +104,7 @@ function App() {
 
         <Accordion label="Timer" defaultExpanded={true}>
           <Sheet>
-            <Timer toTime={nextNotificationTime} />
+            <Timer timerInfo={timerInfo} />
           </Sheet>
         </Accordion>
       </AccordionGroup>
@@ -113,7 +114,7 @@ function App() {
           delay={selectedPace}
           duration={selectedDuration}
           soundUrl={`/sounds/${tones[selectedTone].file}`}
-          onNextNotificationTime={setNextNotificationTime}
+          onTimerInfoChanged={setTimerInfo}
         />
       </Sheet>
 
