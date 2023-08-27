@@ -114,6 +114,10 @@ function App() {
           onTimerInfoChanged={setTimerInfo}
         />
       </Sheet>
+
+      <Sheet component="footer" variant="solid" sx={{ p: 2, background: '#444' }}>
+        A mini-app provided by <a target="_blank" href="https://dayoptimizer.com/">Day Optimizer</a>
+      </Sheet>
     </Stack>
   );
 }
