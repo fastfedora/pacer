@@ -7,17 +7,17 @@ import Header from './components/app/Header';
 import Instructions from './components/app/Instructions';
 import DurationSettings from './components/settings/DurationSettings';
 import PaceSettings from './components/settings/PaceSettings';
+import ToneSettings from './components/settings/ToneSettings';
 import Accordion from './components/styled/Accordion';
 import SoundPlayer from './components/SoundPlayer'
 import Timer from './components/Timer';
+import { ToneInfo } from './types/ToneInfo';
 import './App.css'
-
 
 /**
  * TODO:
  * - Stop the sound when the Stop button is pressed
  */
-
 
 const paces = [
   { label: '0.5 min', seconds: 0.5 * 60 },
@@ -37,14 +37,21 @@ const durations = [
   { label: 'Indefinitely', seconds: undefined },
 ];
 
-const tones = [
-  { label: 'Ocean Waves', file: '530996-surrogatemedia-the-ocean-waves.wav' },
-  { label: 'Altar Chimes', file: '556779-launchsite-altar-chimesringtone.wav' },
-];
+const tones: Record<string, ToneInfo> = {
+  'ocean-waves': {
+    label: 'Ocean Waves',
+    file: '530996-surrogatemedia-the-ocean-waves.wav'
+  },
+  'altar-chimes': {
+    label: 'Altar Chimes',
+    file: '556779-launchsite-altar-chimesringtone.wav'
+  },
+};
 
 function App() {
   const [selectedPace, setSelectedPace] = useState<number | undefined>(paces[0].seconds);
   const [selectedDuration, setSelectedDuration] = useState<number | undefined>(durations[0].seconds);
+  const [selectedTone, setSelectedTone] = useState<string>(Object.keys(tones)[0]);
   const [nextNotificationTime, setNextNotificationTime] = useState<number | undefined>();
 
   return (
@@ -69,6 +76,12 @@ function App() {
               selectedPace={selectedPace}
               onPaceChange={setSelectedPace}
             />
+
+            <ToneSettings
+              tones={tones}
+              selectedTone={selectedTone}
+              onToneChange={setSelectedTone}
+            />
           </Stack>
         </Accordion>
 
@@ -82,7 +95,7 @@ function App() {
       <Sheet sx={{ p: 4, pb: 8 }}>
         <SoundPlayer
           delay={selectedPace}
-          soundUrl={`/sounds/${tones[0].file}`}
+          soundUrl={`/sounds/${tones[selectedTone].file}`}
           onNextNotificationTime={setNextNotificationTime}
         />
       </Sheet>
