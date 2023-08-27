@@ -70,7 +70,7 @@ function App() {
   const [nextNotificationTime, setNextNotificationTime] = useState<number | undefined>();
 
   return (
-    <Stack style={{ width: 600 }} spacing={0}>
+    <Stack style={{ width: 700 }} spacing={0}>
       <Header />
 
       <AccordionGroup>
