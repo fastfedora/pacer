@@ -45,7 +45,7 @@ function App() {
 
   return (
     <Stack style={{ width: 600 }} spacing={8}>
-      <Typography level="h1">Pacing Timer</Typography>
+      <Header />
 
       <PaceSettings
         durations={durations}
