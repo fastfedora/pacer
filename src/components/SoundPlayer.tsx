@@ -1,14 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '@mui/joy/Button';
 import PlayArrow from '@mui/icons-material/PlayArrow';
 import Stop from '@mui/icons-material/Stop';
 
 const defaultDelay = 15 * 60;
-
-function playSound(soundUrl: string) {
-  const audio = new Audio(soundUrl)
-  audio.play()
-}
+const soundCache: Record<string, Audio> = {};
 
 function SoundPlayer({
   delay = defaultDelay,
@@ -21,13 +17,20 @@ function SoundPlayer({
 }) {
   const [intervalId, setIntervalId] = useState<number | null>(null)
 
+  useEffect(() => {
+    if (!soundCache[soundUrl]) {
+      soundCache[soundUrl] = new Audio(soundUrl);
+    }
+  }, [soundUrl])
+
   const handlePlay = () => {
     onNextNotificationTime(Date.now() + delay * 1000)
 
     const newIntervalId = window.setInterval(() => {
-      playSound(soundUrl);
       onNextNotificationTime(Date.now() + delay * 1000)
-    }, delay * 1000)
+      soundCache[soundUrl].play();
+    }, delay * 1000);
+
     setIntervalId(newIntervalId)
   }
 
