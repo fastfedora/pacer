@@ -48,7 +48,7 @@ function App() {
   const [nextNotificationTime, setNextNotificationTime] = useState<number | undefined>();
 
   return (
-    <Stack style={{ width: 600 }} spacing={8}>
+    <Stack style={{ width: 600 }} spacing={0}>
       <Header />
 
       <AccordionGroup>
@@ -74,7 +74,7 @@ function App() {
         </Accordion>
       </AccordionGroup>
 
-      <Sheet>
+      <Sheet sx={{ p: 4, pb: 8 }}>
         <SoundPlayer
           delay={selectedDuration}
           soundUrl={`/sounds/${tones[0].file}`}
@@ -94,7 +94,7 @@ function App() {
         </Sheet>
       }
     </Stack>
-  )
+  );
 }
 
 export default App

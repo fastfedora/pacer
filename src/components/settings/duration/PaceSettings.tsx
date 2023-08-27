@@ -21,7 +21,7 @@ function PaceSettings({
   onTimeBlockChange: (timeBlock?: number) => void
 }) {
   return (
-    <Stack spacing={6}>
+    <Stack spacing={6} sx={{ p: 2 }}>
       <Stack spacing={2}>
         <Typography level="body-lg">For the next</Typography>
 

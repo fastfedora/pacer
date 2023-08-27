@@ -21,7 +21,7 @@ function Timer({ toTime }: { toTime?: number }) {
   }
 
   return (
-    <div style={{ fontSize: 60 }}>
+    <div style={{ fontSize: 72 }}>
       {remainingTime ? formatTime(remainingTime) : '00:00'}
     </div>
   )
