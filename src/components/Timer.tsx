@@ -5,6 +5,8 @@ function Timer({ toTime }: { toTime?: number }) {
 
   useEffect(() => {
     if (toTime) {
+      setRemainingTime(toTime - Date.now());
+
       const intervalId = setInterval(() => {
         setRemainingTime(toTime - Date.now())
       }, 1000)
