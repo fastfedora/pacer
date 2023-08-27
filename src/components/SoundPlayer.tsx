@@ -39,6 +39,7 @@ function SoundPlayer({
   const handleStop = () => {
     if (intervalId) {
       clearInterval(intervalId)
+      soundCache[soundUrl].pause();
       setIntervalId(null)
       onNextNotificationTime(undefined)
     }
