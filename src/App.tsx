@@ -69,6 +69,7 @@ function App() {
   const [selectedDuration, setSelectedDuration] = useState<number | undefined>(durations[0].seconds);
   const [selectedTone, setSelectedTone] = useState<string>(Object.keys(tones)[0]);
   const [timerInfo, setTimerInfo] = useState<TimerInfo>();
+  const [isSettingsExpanded, setSettingsExpanded] = useState<boolean>(true);
 
   return (
     <Stack style={{ width: 700 }}>
@@ -79,7 +80,7 @@ function App() {
           <Instructions />
         </Accordion>
 
-        <Accordion label="Settings" defaultExpanded={true}>
+        <Accordion label="Settings" expanded={isSettingsExpanded} onChange={setSettingsExpanded}>
           <Stack spacing={6} sx={{ p: 2 }}>
             <DurationSettings
               durations={durations}
@@ -109,7 +110,10 @@ function App() {
             delay={selectedPace}
             duration={selectedDuration}
             soundUrl={`/sounds/${tones[selectedTone].file}`}
-            onTimerInfoChanged={setTimerInfo}
+            onTimerInfoChanged={(newTimerInfo) => {
+              setSettingsExpanded(newTimerInfo.nextTime == null);
+              setTimerInfo(newTimerInfo);
+            }}
           />
 
           <Timer timerInfo={timerInfo} />

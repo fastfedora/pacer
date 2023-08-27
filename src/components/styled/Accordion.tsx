@@ -5,15 +5,21 @@ import AccordionSummary from '@mui/joy/AccordionSummary';
 export default function StyledAccordion({
   label,
   defaultExpanded,
+  expanded,
+  onChange,
   children,
 }: {
   label: string;
   defaultExpanded?: boolean;
+  expanded?: boolean;
+  onChange?: (isExpanded: boolean) => void;
   children: React.ReactNode;
 }) {
   return (
     <Accordion
       defaultExpanded={defaultExpanded}
+      expanded={expanded}
+      onChange={onChange ? (_, isExpanded) => onChange(isExpanded) : undefined}
       sx={{
         borderBottom: "none",
         borderTopStyle: "solid",
