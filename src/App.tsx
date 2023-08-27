@@ -1,9 +1,13 @@
 import { useState } from 'react'
+import AccordionGroup from '@mui/joy/AccordionGroup';
 import Sheet from '@mui/joy/Sheet';
 import Stack from '@mui/joy/Stack';
 import Typography from '@mui/joy/Typography';
 // import DurationSettings from './components/settings/duration/DurationSettings';
+import Header from './components/app/Header';
+import Instructions from './components/app/Instructions';
 import PaceSettings from './components/settings/duration/PaceSettings';
+import Accordion from './components/styled/Accordion';
 import SoundPlayer from './components/SoundPlayer'
 import Timer from './components/Timer';
 import './App.css'
@@ -47,18 +51,28 @@ function App() {
     <Stack style={{ width: 600 }} spacing={8}>
       <Header />
 
-      <PaceSettings
-        durations={durations}
-        timeBlocks={timeBlocks}
-        selectedDuration={selectedDuration}
-        selectedTimeBlock={selectedTimeBlock}
-        onDurationChange={setSelectedDuration}
-        onTimeBlockChange={setSelectedTimeBlock}
-      />
+      <AccordionGroup>
+        <Accordion label="Instructions">
+          <Instructions />
+        </Accordion>
 
-        <Sheet>
-          <Timer toTime={nextNotificationTime} />
-        </Sheet>
+        <Accordion label="Settings" defaultExpanded={true}>
+          <PaceSettings
+            durations={durations}
+            timeBlocks={timeBlocks}
+            selectedDuration={selectedDuration}
+            selectedTimeBlock={selectedTimeBlock}
+            onDurationChange={setSelectedDuration}
+            onTimeBlockChange={setSelectedTimeBlock}
+          />
+        </Accordion>
+
+        <Accordion label="Timer" defaultExpanded={true}>
+          <Sheet>
+            <Timer toTime={nextNotificationTime} />
+          </Sheet>
+        </Accordion>
+      </AccordionGroup>
 
       <Sheet>
         <SoundPlayer
