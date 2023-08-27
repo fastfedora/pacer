@@ -2,7 +2,7 @@ import Button from '@mui/joy/Button';
 import ButtonGroup from '@mui/joy/ButtonGroup';
 import Stack from '@mui/joy/Stack';
 import Typography from '@mui/joy/Typography';
-import { Pace } from '../../../types/Pace';
+import { Pace } from '../../types/Pace';
 
 export default function PaceSettings({
   paces,

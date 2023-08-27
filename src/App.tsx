@@ -6,7 +6,7 @@ import Typography from '@mui/joy/Typography';
 import Header from './components/app/Header';
 import Instructions from './components/app/Instructions';
 import DurationSettings from './components/settings/DurationSettings';
-import PaceSettings from './components/settings/duration/PaceSettings';
+import PaceSettings from './components/settings/PaceSettings';
 import Accordion from './components/styled/Accordion';
 import SoundPlayer from './components/SoundPlayer'
 import Timer from './components/Timer';
