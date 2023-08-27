@@ -70,7 +70,7 @@ function App() {
   const [timerInfo, setTimerInfo] = useState<TimerInfo>();
 
   return (
-    <Stack style={{ width: 700 }} spacing={0}>
+    <Stack style={{ width: 700 }}>
       <Header />
 
       <AccordionGroup>
@@ -100,19 +100,19 @@ function App() {
             />
           </Stack>
         </Accordion>
-
-        <Accordion label="Timer" defaultExpanded={true}>
-          <Timer timerInfo={timerInfo} />
-        </Accordion>
       </AccordionGroup>
 
-      <Sheet sx={{ pt: 4, pb: 8 }}>
-        <SoundPlayer
-          delay={selectedPace}
-          duration={selectedDuration}
-          soundUrl={`/sounds/${tones[selectedTone].file}`}
-          onTimerInfoChanged={setTimerInfo}
-        />
+      <Sheet>
+        <Stack sx={{ pt: 6, pb: 8 }} spacing={4}>
+          <SoundPlayer
+            delay={selectedPace}
+            duration={selectedDuration}
+            soundUrl={`/sounds/${tones[selectedTone].file}`}
+            onTimerInfoChanged={setTimerInfo}
+          />
+
+          <Timer timerInfo={timerInfo} />
+        </Stack>
       </Sheet>
 
       <Sheet component="footer" variant="solid" sx={{ p: 2, background: '#444' }}>

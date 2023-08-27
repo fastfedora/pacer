@@ -104,8 +104,8 @@ function SoundPlayer({
   return (
     <div>
       {timerId
-        ? <Button onClick={handleStop}><Stop /></Button>
-        : <Button onClick={handlePlay}><PlayArrow /></Button>
+        ? <Button size="lg" onClick={handleStop}><Stop /></Button>
+        : <Button size="lg" onClick={handlePlay}><PlayArrow /></Button>
       }
     </div>
   )
