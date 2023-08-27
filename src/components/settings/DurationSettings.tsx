@@ -20,7 +20,12 @@ export default function DurationSettings({
       <Typography level="body-lg">For the next</Typography>
 
       <ButtonGroup
-        style={{ marginLeft: "auto", marginRight: "auto" }}
+        style={{
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          flexWrap: 'wrap',
+          justifyContent: 'center'
+        }}
         variant="soft"
         spacing="0.5rem"
       >

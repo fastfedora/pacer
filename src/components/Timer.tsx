@@ -33,7 +33,7 @@ function Timer({ timerInfo }: { timerInfo?: TimerInfo }) {
 
   return (
     <Stack style={{ fontSize: 72, paddingTop: 36 }} spacing={4}>
-      <Stack direction="row" justifyContent="center" spacing={8}>
+      <Stack direction={['column', 'row']} justifyContent="space-evenly" spacing={[8, 8]}>
         <div>
           <Typography level="title-lg">Next tone in</Typography>
           {remainingTime ? formatTime(remainingTime) : '00:00'}

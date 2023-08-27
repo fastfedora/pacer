@@ -72,7 +72,7 @@ function App() {
   const [isSettingsExpanded, setSettingsExpanded] = useState<boolean>(true);
 
   return (
-    <Stack style={{ width: 700 }}>
+    <Stack style={{ maxWidth: 768 }}>
       <Header />
 
       <AccordionGroup>

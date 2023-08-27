@@ -18,7 +18,12 @@ export default function ToneSettings({
       <Typography level="body-lg">By playing</Typography>
 
       <ButtonGroup
-        style={{ marginLeft: "auto", marginRight: "auto" }}
+        style={{
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          flexWrap: 'wrap',
+          justifyContent: 'center'
+        }}
         variant="soft"
         spacing="0.5rem"
       >

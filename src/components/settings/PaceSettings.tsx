@@ -18,7 +18,12 @@ export default function PaceSettings({
       <Typography level="body-lg">Remind me of time passing every</Typography>
 
       <ButtonGroup
-        style={{ marginLeft: "auto", marginRight: "auto" }}
+        style={{
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          flexWrap: 'wrap',
+          justifyContent: 'center'
+        }}
         variant="soft"
         spacing="0.5rem"
       >
